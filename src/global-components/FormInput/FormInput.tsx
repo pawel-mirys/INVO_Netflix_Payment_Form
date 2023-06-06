@@ -13,7 +13,7 @@ export const FormInput = ({
 }: FormInputProps) => {
   return (
     <input
-      className={`input ${className}`}
+      className={`form-input ${className}`}
       onChange={onChange}
       name={props.name}
       type={props.type}
