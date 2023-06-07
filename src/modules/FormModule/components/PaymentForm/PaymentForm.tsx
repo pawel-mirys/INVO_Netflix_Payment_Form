@@ -2,6 +2,7 @@ import { Button } from '@/global-components/Button/Button';
 import { FormInput } from '@/global-components/FormInput/FormInput';
 import React, { useState } from 'react';
 import { BasicValidatorType, FormType } from '../../types/types';
+import './PaymentForm.scss';
 
 export const PaymentForm = () => {
   const [form, setForm] = useState<FormType>({
