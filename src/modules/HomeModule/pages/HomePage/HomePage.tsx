@@ -1,11 +1,12 @@
 import React from 'react';
 import './HomePage.scss';
-import { PaymentForm } from '@/modules/FormModule/components/PaymentForm/PaymentForm';
+
+import { PaymentFormPage } from '@/modules/FormModule/pages/PaymentFormPage/PaymentFormPage';
 
 export const HomePage = () => {
   return (
     <>
-      <PaymentForm />
+      <PaymentFormPage />
     </>
   );
 };
