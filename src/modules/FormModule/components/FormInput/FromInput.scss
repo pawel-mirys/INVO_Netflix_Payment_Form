@@ -1,0 +1,31 @@
+.form-input-container {
+  width: 100%;
+  &__form-input {
+    width: 100%;
+    padding: 16px 0 16px 32px;
+    background: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    color: var(--color-black-400);
+    border: 1px solid var(--color-black-400);
+    border-radius: 50px;
+    outline: none;
+    &:hover {
+      color: var(--color-white-200);
+      border-color: var(--color-white-200);
+    }
+    &:focus {
+      color: var(--color-white-100);
+      border-color: var(--color-white-200);
+    }
+  }
+
+  &__error-message {
+    margin: 0;
+    color: var(--color-red-600);
+    font-size: 12px;
+    margin-left: 15px;
+  }
+}

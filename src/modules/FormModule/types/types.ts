@@ -7,5 +7,5 @@ export type FormType = {
 };
 
 export type BasicValidatorType = {
-  [key: string]: (value: string) => boolean | string;
+  [key: string]: (value: string ) => boolean | string;
 };

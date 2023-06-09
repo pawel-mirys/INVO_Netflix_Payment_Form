@@ -1,10 +1,11 @@
 import { Button } from '@/global-components/Button/Button';
-import { FormInput } from '@/global-components/FormInput/FormInput';
+import { FormInput } from '@/modules/FormModule/components/FormInput/FormInput';
 import React, { useMemo, useState } from 'react';
 import { BasicValidatorType, FormType } from '../../types/types';
 import './PaymentForm.scss';
 
 export const PaymentForm = () => {
+  
   const [form, setForm] = useState<FormType>({
     fullName: {
       value: '',
@@ -27,13 +28,29 @@ export const PaymentForm = () => {
 
   const basicValidator: BasicValidatorType = {
     fullName: (value: string) =>
-      /([A-Za-z0-9żźćńółęąśŻŹĆĄŚĘŁÓŃ]{3,} )([A-Za-z0-9żźćńółęąśŻŹĆĄŚĘŁÓŃ]{3,})/.test(
+      /([A-Za-z0-9żźćńółęąśŻŹĆĄŚĘŁÓŃ])([A-Za-z0-9żźćńółęąśŻŹĆĄŚĘŁÓŃ])/.test(
         String(value)
       ) || 'Full Name is incorrect',
+
+    cardNumber: (value: string) =>
+      /[0-9]{16,}/.test(String(value)) || 'Card number is incorrect',
+
+    expiryDate: (value: string) =>
+      /([0-9]{2,})([/]{1,})([0-9]{2,})/.test(String(value)) ||
+      'Expiry date is incorrect',
+
+    CVV: (value: string) =>
+      /([0-9]{3,})/.test(String(value)) || 'CVV code is incorrect',
   };
+
+  const isFormValid = useMemo(
+    () => Object.values(form).every(({ isValid }) => isValid),
+    [form]
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (isFormValid) {
       console.log(form);
     }
@@ -55,18 +72,10 @@ export const PaymentForm = () => {
       }
     }
 
-    const isFormValid = useMemo(
-      () => Object.values(form).every(({ isValid }) => isValid),
-      [form]
-    );
-
-    setForm(
-      (prevState) =>
-        (prevState = {
-          ...form,
-          [name]: { ...form[name], value, isValid, errorMessage },
-        })
-    );
+    setForm({
+      ...form,
+      [name]: { ...form[name], value, isValid, errorMessage },
+    });
   };
 
   return (
@@ -74,22 +83,43 @@ export const PaymentForm = () => {
       className='simple-form'
       onSubmit={handleSubmit}
       onChange={handleFormChange}>
-      <FormInput type='text' name='fullName' placeholder='Name on card' />
-      {form['fullName'].errorMessage && (
-        <p className='simple-form_error-message'>
-          {form['fullName'].errorMessage}
-        </p>
-      )}
-      <FormInput type='text' name='cardNumber' placeholder='Card number' />
+      <FormInput
+        type='text'
+        name='fullName'
+        placeholder='Name on card'
+        error={form['fullName'].errorMessage}
+        maxLength={25}
+      />
+      <FormInput
+        type='text'
+        name='cardNumber'
+        placeholder='Card number'
+        error={form['cardNumber'].errorMessage}
+        maxLength={16}
+        required
+      />
       <div className='simple-form__flex-container'>
         <FormInput
           type='text'
           name='expiryDate'
           placeholder='Expiry date (MM/YY)'
+          error={form['expiryDate'].errorMessage}
+          maxLength={5}
+          required
         />
-        <FormInput type='text' name='CVV' placeholder='CVV' />
+        <FormInput
+          type='text'
+          name='CVV'
+          placeholder='CVV'
+          error={form['CVV'].errorMessage}
+          maxLength={3}
+          required
+        />
       </div>
-      <Button type='submit' disabled={!isFormValid}>
+      <Button
+        className='simple-form__submit-button'
+        type='submit'
+        disabled={!isFormValid}>
         Next Step
       </Button>
     </form>

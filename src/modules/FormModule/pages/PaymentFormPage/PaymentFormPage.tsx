@@ -9,9 +9,13 @@ export const PaymentFormPage = () => {
         <h1 className='payment-page__header'>Add your informations</h1>
         <PaymentForm />
       </div>
-      {/* <div className='payment-page__banner-section'>
-        <img src='/src/assets/images/netflix-banner.png' alt='netflix banner' />
-      </div> */}
+      <div className='payment-page__banner-section'>
+        <img
+          className='banner'
+          src='/src/assets/images/netflix-banner.png'
+          alt='netflix banner'
+        />
+      </div>
     </div>
   );
 };
