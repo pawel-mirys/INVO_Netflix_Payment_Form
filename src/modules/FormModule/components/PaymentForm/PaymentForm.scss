@@ -1,5 +1,5 @@
 .simple-form {
-  width: 440px;
+  width: 100%;
   gap: 14px;
   display: flex;
   justify-content: center;
@@ -22,8 +22,27 @@
 
   &__flex-container {
     width: 100%;
-    gap: 14px;
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
     flex-direction: row;
+    gap: 14px;
+    .expiry-date-input {
+      max-width: 361px;
+    }
+    .cvv-input {
+      max-width: 165px;
+    }
+  }
+
+  @media (max-width: 470px) {
+    &__flex-container {
+      .expiry-date-input {
+        max-width: 209px;
+      }
+      .cvv-input {
+        max-width: 120px;
+      }
+    }
   }
 }

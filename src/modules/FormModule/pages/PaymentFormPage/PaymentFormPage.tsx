@@ -6,8 +6,10 @@ export const PaymentFormPage = () => {
   return (
     <div className='payment-page'>
       <div className='payment-page__form-section'>
-        <h1 className='payment-page__header'>Add your informations</h1>
-        <PaymentForm />
+        <div className='payment-page__form-container'>
+          <h1 className='payment-page__header'>Add your informations</h1>
+          <PaymentForm />
+        </div>
       </div>
       <div className='payment-page__banner-section'>
         <img

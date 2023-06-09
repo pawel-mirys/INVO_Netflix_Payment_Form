@@ -18,9 +18,9 @@ export const FormInput = ({
   ...props
 }: FormInputProps) => {
   return (
-    <div className='form-input-container'>
+    <div className={`form-input-container ${className}`}>
       <input
-        className={`form-input-container__form-input ${className}`}
+        className={`form-input-container__form-input`}
         onChange={onChange}
         name={props.name}
         type={props.type}
