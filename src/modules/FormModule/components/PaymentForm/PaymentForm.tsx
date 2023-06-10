@@ -5,7 +5,6 @@ import { BasicValidatorType, FormType } from '../../types/types';
 import './PaymentForm.scss';
 
 export const PaymentForm = () => {
-  
   const [form, setForm] = useState<FormType>({
     fullName: {
       value: '',
@@ -101,8 +100,7 @@ export const PaymentForm = () => {
       <div className='simple-form__flex-container'>
         <FormInput
           type='text'
-          className='expiryDate'
-          name='expiry-date-input'
+          name='expiryDate'
           placeholder='Expiry date (MM/YY)'
           error={form['expiryDate'].errorMessage}
           maxLength={5}
@@ -111,7 +109,6 @@ export const PaymentForm = () => {
         <FormInput
           type='text'
           name='CVV'
-          className='cvv-input'
           placeholder='CVV'
           error={form['CVV'].errorMessage}
           maxLength={3}
