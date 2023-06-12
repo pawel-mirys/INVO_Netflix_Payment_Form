@@ -1,0 +1,48 @@
+.simple-form {
+  width: 100%;
+  gap: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__submit-button {
+    margin-top: 18px;
+
+    &[disabled] {
+      background-color: var(--background-color-disabled);
+      color: var(--on-background-color-disabled);
+
+      &:hover {
+        cursor: not-allowed;
+        background-color: var(--background-color-disabled);
+      }
+    }
+  }
+
+  &__flex-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    gap: 14px;
+    .expiry-date-input {
+      max-width: 361px;
+    }
+    .cvv-input {
+      max-width: 165px;
+    }
+  }
+
+  @media (max-width: 470px) {
+    &__flex-container {
+      .expiry-date-input {
+        max-width: 209px;
+      }
+      .cvv-input {
+        max-width: 120px;
+      }
+    }
+  }
+}
